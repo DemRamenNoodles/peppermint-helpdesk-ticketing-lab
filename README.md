@@ -1,11 +1,11 @@
-# Shared Drive Access — Permission Misconfiguration
+# Peppermint Helpdesk — Shared Drive Access Misconfiguration
 
 | | |
 |---|---|
 | **Incident** | User unable to access Marketing shared drive (Error 0x80070035) |
-| **Severity** | High — Blocked from critical business resources |
+| **Severity** | High. Blocked from critical business resources |
 | **Root Cause** | Missing Active Directory security group assignment |
-| **Status** | Resolved — Same-day fix |
+| **Status** | Resolved. Same-day fix |
 | **Environment** | Corporate IT environment, March 2026 |
 
 ---
@@ -30,9 +30,9 @@ The metadata told a story: new user, immediate access denial, specific drive, sp
 
 **Supporting screenshots:**
 
-![Step 01 - Intake](./screenshots/image1A.png)
+![Peppermint ticket intake — Ken Smith reports shared drive access denied](screenshots/image1A.png)
 
-![Step 01 - Additional Details](./screenshots/image1B.png)
+![Intake details — error code 0x80070035 and affected resource](screenshots/image1B.png)
 
 ---
 
@@ -52,11 +52,11 @@ Ken was missing from the security group that governs S: drive access. During onb
 
 **Diagnosis screenshots:**
 
-![Step 02 - Scope Check](./screenshots/image2A.png)
+![Scope check — other users able to reach the S: drive](screenshots/image2A.png)
 
-![Step 03 - Missing Security Group](./screenshots/image3A.png)
+![Active Directory — Ken's account missing the Marketing security group](screenshots/image3A.png)
 
-![Step 03 - ACL Configuration](./screenshots/image3B.png)
+![S: drive ACL configuration — access governed by security group membership](screenshots/image3B.png)
 
 ---
 
@@ -76,7 +76,7 @@ The ticket closed same-day.
 
 **Resolution screenshot:**
 
-![Step 04 - Resolution Applied](./screenshots/image4A.png)
+![Security group added — access restored and confirmed by user](screenshots/image4A.png)
 
 ---
 
@@ -96,11 +96,11 @@ This ticket was technically simple — add a user to a group, done. But it demon
 
 | Tool | Purpose |
 |---|---|
-| Active Directory Users and Computers | Managing user accounts and security group memberships |
-| Windows File Share / ACL | Diagnosing permission inheritance and access control |
-| Network diagnostics | Ruling out connectivity as a contributing factor |
-| Ticketing system | Documenting the issue, resolution, and prevention steps |
+| **Peppermint** | Ticket intake, triage, and lifecycle documentation |
+| **Active Directory Users and Computers** | Managing user accounts and security group memberships |
+| **Windows File Share / ACL** | Diagnosing permission inheritance and access control |
+| **Network diagnostics** | Ruling out connectivity as a contributing factor |
 
 ---
 
-*Case Study — Lab Simulation — March 2026*
+*Case Study, Lab Simulation, March 2026*
