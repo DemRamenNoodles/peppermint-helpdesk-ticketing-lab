@@ -1,4 +1,4 @@
-# Peppermint Helpdesk — Shared Drive Access Misconfiguration
+# Peppermint Helpdesk: Shared Drive Access Misconfiguration
 
 | | |
 |---|---|
@@ -18,21 +18,21 @@ A new employee couldn't access the company shared drive needed for day-one onboa
 
 ## The Incident
 
-The ticket came in around 7:30 PM on a Friday: a new marketing hire (Ken Smith) couldn't access the shared drive. He had an immediate deadline — campaign files needed uploading — and was locked out.
+The ticket came in around 7:30 PM on a Friday: a new marketing hire (Ken Smith) couldn't access the shared drive. He had an immediate deadline (campaign files needed uploading) and was locked out.
 
 **What I needed to establish first:**
 - Which shared drive? Marketing's S: drive.
 - What error exactly? "Network Path Not Found" (0x80070035).
-- When did it start? Immediately upon hire — suggests onboarding setup issue, not a temporary outage.
-- Device and network? Corporate workstation on the company network — no VPN or remote access complications.
+- When did it start? Immediately upon hire. Suggests onboarding setup issue, not a temporary outage.
+- Device and network? Corporate workstation on the company network. No VPN or remote access complications.
 
 The metadata told a story: new user, immediate access denial, specific drive, specific error. This wasn't a network problem.
 
 **Supporting screenshots:**
 
-![Peppermint ticket intake — Ken Smith reports shared drive access denied](screenshots/image1A.png)
+![Peppermint ticket intake: Ken Smith reports shared drive access denied](screenshots/image1A.png)
 
-![Intake details — error code 0x80070035 and affected resource](screenshots/image1B.png)
+![Intake details: error code 0x80070035 and affected resource](screenshots/image1B.png)
 
 ---
 
@@ -46,17 +46,17 @@ I verified that other users could access the S: drive fine. Ken's workstation co
 
 **Root Cause**
 
-I pulled up Active Directory and checked Ken's security group memberships. Windows file shares use Access Control Lists (ACLs) that reference AD security groups — if a user isn't in the right group, the ACL denies access regardless of anything else.
+I pulled up Active Directory and checked Ken's security group memberships. Windows file shares use Access Control Lists (ACLs) that reference AD security groups. If a user isn't in the right group, the ACL denies access regardless of anything else.
 
 Ken was missing from the security group that governs S: drive access. During onboarding, he'd been added to some groups but not the critical one. That's why he got "access denied."
 
 **Diagnosis screenshots:**
 
-![Scope check — other users able to reach the S: drive](screenshots/image2A.png)
+![Scope check: other users able to reach the S: drive](screenshots/image2A.png)
 
-![Active Directory — Ken's account missing the Marketing security group](screenshots/image3A.png)
+![Active Directory: Ken's account missing the Marketing security group](screenshots/image3A.png)
 
-![S: drive ACL configuration — access governed by security group membership](screenshots/image3B.png)
+![S: drive ACL configuration: access governed by security group membership](screenshots/image3B.png)
 
 ---
 
@@ -76,19 +76,19 @@ The ticket closed same-day.
 
 **Resolution screenshot:**
 
-![Security group added — access restored and confirmed by user](screenshots/image4A.png)
+![Security group added: access restored and confirmed by user](screenshots/image4A.png)
 
 ---
 
 ## What This Taught Me
 
-This ticket was technically simple — add a user to a group, done. But it demonstrates something more important: how a structured approach prevents mistakes and builds lasting solutions.
+This ticket was technically simple: add a user to a group, done. But it demonstrates something more important: how a structured approach prevents mistakes and builds lasting solutions.
 
 **The methodology matters.** Intake → Scope Check → Root Cause → Resolution → Closure. Follow that, and you don't waste time chasing the wrong problem or miss the documentation that prevents the next incident.
 
 **Communication throughout reduces friction.** I didn't just fix it invisibly; I confirmed every step with the user. That builds confidence and prevents the ticket from bouncing back.
 
-**Prevention is part of the job.** Closing a ticket isn't the end. Preventing the same issue from happening again — through checklist improvements, process documentation, or automation — is what separates support work from support *system*.
+**Prevention is part of the job.** Closing a ticket isn't the end. Preventing the same issue from happening again (through checklist improvements, process documentation, or automation) is what separates support work from support *system*.
 
 ---
 
