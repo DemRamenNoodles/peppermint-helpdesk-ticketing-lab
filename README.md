@@ -12,7 +12,7 @@
 
 ## Overview
 
-A new employee couldn't access the company shared drive needed for day-one onboarding and project work. The error message (0x80070035) suggested a network path issue, but the real problem was simpler: the user's AD account wasn't in the right security group. This case study documents how systematic scope-checking and permission analysis turned a high-priority incident into a resolved ticket in under 4 hours.
+A new employee couldn't access the company shared drive needed for day-one onboarding and project work. The error message (0x80070035) suggested a network path issue, but the real problem was simpler: the user's AD account wasn't in the right security group.
 
 ---
 
